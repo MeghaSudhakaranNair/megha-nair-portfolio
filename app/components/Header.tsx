@@ -37,20 +37,57 @@ const Header = () => {
             height={50}
           />
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Button href="#home" sx={{ color: "var(--foreground)" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: { xs: 1, sm: 2 },
+          }}
+        >
+          <Button
+            href="#home"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+              color: "var(--foreground)",
+            }}
+          >
             Home
           </Button>
-          <Button href="#projects" sx={{ color: "var(--foreground)" }}>
+          <Button
+            href="#projects"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+              color: "var(--foreground)",
+            }}
+          >
             Projects
           </Button>
-          <Button href="#about-me" sx={{ color: "var(--foreground)" }}>
+          <Button
+            href="#about-me"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+
+              color: "var(--foreground)",
+            }}
+          >
             About Me
           </Button>
-          <Button href="#contact" sx={{ color: "var(--foreground)" }}>
+          <Button
+            href="#contact"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+              color: "var(--foreground)",
+            }}
+          >
             Contact Us
           </Button>
-          <Button href="/resume" sx={{ color: "var(--foreground)" }}>
+          <Button
+            href="/resume"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+              color: "var(--foreground)",
+            }}
+          >
             Download Resume
           </Button>
           <IconButton

@@ -52,9 +52,9 @@ export default function Home() {
     <div>
       <Header />
       <Landing />
-      <Projects />
-      <AboutMe />
-      <Contact />
+      {/* <Projects /> */}
+      {/* <AboutMe /> */}
+      {/* <Contact /> */}
     </div>
   );
 }
