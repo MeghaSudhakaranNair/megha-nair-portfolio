@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{ backgroundColor: "transparent", boxShadow: "none" }} // Transparent header with no shadow
     >
       <Toolbar>

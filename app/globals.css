@@ -30,7 +30,9 @@
 
 html {
   scroll-behavior: smooth; /* Smooth scrolling between sections */
-  height: 100%; /* Ensures the body takes up full height */
+  height: 100%; /* Ensures the body takes full height */
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -42,18 +44,35 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
-  overflow-y: scroll; /* Enable scrolling */
+  height: 100vh;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
 }
 
 section {
-  scroll-snap-align: start; /* Snap each section to the top of the viewport */
-  height: 100vh; /* 100% height of the viewport for each section */
+  scroll-snap-align: start; /* Align each section to the top of the viewport */
+  height: 100vh; /* Full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 64px; /* Offset for the fixed header, adjust as necessary */
+  padding-top: 64px; /* Adjust for fixed header */
+  opacity: 0; /* Initially hide the sections */
+  transition: opacity 0.7s ease-in-out;
+}
+
+/* Ensure smooth fading transitions */
+.fade {
+  transition: opacity 0.7s ease-in-out; /* Smooth transition */
+}
+
+/* Initially hidden */
+.fadeOut {
+  opacity: 0;
+}
+
+/* Visible when in view */
+.fadeIn {
+  opacity: 1;
 }
 
 /* Header Styles */
