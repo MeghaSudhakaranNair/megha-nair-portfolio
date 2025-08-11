@@ -26,12 +26,18 @@ const Header = () => {
   return (
     <AppBar
       position="fixed"
-      sx={{ backgroundColor: "transparent", boxShadow: "none" }} // Transparent header with no shadow
+      sx={{
+        background:
+          theme === "dark"
+            ? "linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))" // Dark theme gradient
+            : "linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))", // Light theme gradient
+        boxShadow: "none", // Remove the default box shadow
+      }} // Transparent header with no shadow
     >
       <Toolbar>
         <Box sx={{ flexGrow: 1 }}>
           <img
-            src="/images/logo-placeholder.png"
+            src={theme === "dark" ? "/MSN.svg" : "/MSN-dark.svg"}
             alt="Logo"
             width={100}
             height={50}

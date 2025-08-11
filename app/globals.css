@@ -4,17 +4,66 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a; /* Dark background */
-  --foreground: #ededed; /* Light text for dark mode */
-  --link-color: #82aaff;
-  --header-background: #0a0a0a;
-}
-
-[data-theme="light"] {
   --background: #ffffff; /* Light background */
   --foreground: #171717; /* Dark text for light mode */
   --link-color: #1a73e8;
   --header-background: #ffffff;
+
+  --aurora: repeating-linear-gradient(
+    100deg,
+    #60a5fa 10%,
+    #3b82f6 15%,
+    #93c5fd 20%,
+    #ddd6fe 25%,
+    #60a5fa 30%
+  );
+  --dark-gradient: repeating-linear-gradient(
+    100deg,
+    #000 0%,
+    #000 7%,
+    transparent 10%,
+    transparent 12%,
+    #000 16%
+  );
+  --white-gradient: repeating-linear-gradient(
+    100deg,
+    #fff 0%,
+    #fff 7%,
+    transparent 10%,
+    transparent 12%,
+    #fff 16%
+  );
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a; /* Dark background */
+  --foreground: #ededed; /* Light text for dark mode */
+  --link-color: #82aaff;
+  --header-background: #0a0a0a;
+  --aurora: repeating-linear-gradient(
+    100deg,
+    #60a5fa 10%,
+    #3b82f6 15%,
+    #93c5fd 20%,
+    #ddd6fe 25%,
+    #60a5fa 30%
+  );
+  --dark-gradient: repeating-linear-gradient(
+    100deg,
+    #000 0%,
+    #000 7%,
+    transparent 10%,
+    transparent 12%,
+    #000 16%
+  );
+  --white-gradient: repeating-linear-gradient(
+    100deg,
+    #fff 0%,
+    #fff 7%,
+    transparent 10%,
+    transparent 12%,
+    #fff 16%
+  );
 }
 
 /* @theme inline {
@@ -89,6 +138,9 @@ section {
 /* Visible when in view */
 .fadeIn {
   opacity: 1;
+}
+.fade-card {
+  transition: opacity 1s ease-out;
 }
 
 /* Header Styles */
