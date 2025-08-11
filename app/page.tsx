@@ -53,8 +53,8 @@ export default function Home() {
       <Header />
       <Landing />
       <Projects />
-      <AboutMe />
-      <Contact />
+      {/* <AboutMe /> */}
+      {/* <Contact /> */}
     </div>
   );
 }
