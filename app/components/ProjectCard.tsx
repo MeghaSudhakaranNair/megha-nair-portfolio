@@ -1,49 +1,47 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, Button } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 interface Project {
   title: string;
-  from: string;
-  to: string;
+  description: string;
   image: string;
+  tools: string;
+  githubLink: string;
 }
 
-interface MainCardsProps {
+interface ProjectCardsProps {
   projects: Project[];
 }
 
-const MainCards = ({ projects }: MainCardsProps) => {
+const ProjectCards = ({ projects }: ProjectCardsProps) => {
   const [currentTheme, setCurrentTheme] = useState<string | null>(null);
 
   // Set theme on mount and observe theme changes dynamically
   useEffect(() => {
-    // Function to update theme
     const updateTheme = () => {
       const theme = document.documentElement.getAttribute("data-theme");
       setCurrentTheme(theme);
-      console.log("Current theme:", theme); // Log the current theme
+      console.log("Current theme:", theme);
     };
 
-    // Initialize observer to watch for changes to the `data-theme` attribute
     const observer = new MutationObserver(() => {
       updateTheme(); // Update theme when it changes
     });
 
-    // Start observing the <html> element for changes in the `data-theme` attribute
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
 
-    // Initial theme load
     updateTheme();
 
-    // Cleanup observer when component unmounts
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       AOS.init({
@@ -55,52 +53,42 @@ const MainCards = ({ projects }: MainCardsProps) => {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      console.log("this");
-      return;
-    } // Avoid running this on server side
-    console.log("is itrunning");
+    if (typeof window === "undefined") return;
+
     const fadeOutElements = document.querySelectorAll(".fade-card");
-    console.log(fadeOutElements);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) {
-            // Apply the fade-out animation when the element is about to leave
             entry.target.classList.add("fadeOut");
           } else {
-            // Remove the fade-out effect when the element comes back into view
             entry.target.classList.remove("fadeOut");
           }
         });
       },
-      {
-        threshold: 0.1, // Start fading out when 10% of the element is out of view
-      }
+      { threshold: 0.1 }
     );
 
     fadeOutElements.forEach((el) => observer.observe(el));
 
-    // Cleanup observer when component unmounts
     return () => observer.disconnect();
   }, []);
 
-  // Define background and text color based on the current theme
   const backgroundColor = currentTheme === "dark" ? "#0a0a0a" : "#ffffff";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#171717";
-  const borderStyle = currentTheme === "light" ? "1px solid #dcdcdc" : "none";
 
   return (
     <Box
       sx={{
         display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
+        overflowX: "auto",
+        whiteSpace: "nowrap",
+        justifyContent: "flex-begin",
         gap: 4,
-        pl: { sm: 2, md: 10 },
-        pr: { sm: 2, md: 14 },
-        backgroundColor: backgroundColor,
+        pl: { sm: 1, md: 10 },
+        pr: { sm: 1, md: 14 },
+        backgroundColor,
         color: textColor,
       }}
     >
@@ -108,49 +96,56 @@ const MainCards = ({ projects }: MainCardsProps) => {
         <Box
           key={index}
           sx={{
+            flexShrink: 0,
             flexBasis: { xs: "100%", sm: "45%", md: "30%" },
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-begin",
+            flexDirection: "row",
           }}
         >
           <Card
             className="fade-card"
             sx={{
-              width: 300,
-
-              //   #a4b3ff26
-              backgroundColor:
-                currentTheme === "dark"
-                  ? "rgba(31, 31, 31, 0.6)" // dark translucent
-                  : "rgba(21, 128, 248, 0.1)", // light translucent
+              width: 400,
+              backgroundColor: currentTheme === "dark" ? "#333" : " #1580f826",
               color: currentTheme === "dark" ? "#fff" : "#000",
               borderRadius: "20px",
               boxShadow: "none",
-
-              padding: "25px 15px 15px 15px",
+              padding: "10px",
+              display: "flex",
+              flexDirection: "row",
             }}
             data-aos="fade-up"
             data-aos-delay={`${index * 100}`}
             data-aos-anchor-placement="top-bottom"
           >
-            <img
-              src={project.image}
-              alt="Project Image"
-              style={{
-                width: "100%",
-                height: "200px",
-                objectFit: "cover",
-                borderRadius: "10px",
+            {/* Image Section */}
+            <Box
+              sx={{
+                width: "20%",
+                height: "100px",
+                backgroundImage: `url(${project.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                borderRadius: "20px 0 0 20px",
               }}
-            />
+            ></Box>
 
-            <CardContent>
+            {/* Text Section */}
+            <Box
+              sx={{
+                padding: "20px",
+                width: "60%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
               <Typography
-                variant="h6"
                 sx={{
                   color: textColor,
-                  textAlign: "left",
-                  marginBottom: "2px",
+                  marginBottom: "10px",
+                  fontSize: "18px",
                 }}
               >
                 {project.title}
@@ -159,13 +154,38 @@ const MainCards = ({ projects }: MainCardsProps) => {
                 variant="body2"
                 sx={{
                   color: textColor,
-                  textAlign: "left",
-                  marginBottom: "5px",
+                  marginBottom: "10px",
+                  whiteSpace: "normal", // Allow text to wrap
+                  wordWrap: "break-word", // Break long words if necessary
                 }}
               >
-                {project.from} - {project.to}
+                {project.description}
               </Typography>
-            </CardContent>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: "bold",
+                  color: textColor,
+                  marginBottom: "10px",
+                  whiteSpace: "normal", // Allow text to wrap
+                  wordWrap: "break-word", // Break long words if necessary
+                }}
+              >
+                Tools Used: {project.tools}
+              </Typography>
+              {/* <Button
+                variant="contained"
+                color="primary"
+                href={project.githubLink}
+                target="_blank"
+                sx={{
+                  alignSelf: "flex-start",
+                  marginTop: "auto",
+                }}
+              >
+                View on GitHub
+              </Button> */}
+            </Box>
           </Card>
         </Box>
       ))}
@@ -173,4 +193,4 @@ const MainCards = ({ projects }: MainCardsProps) => {
   );
 };
 
-export default MainCards;
+export default ProjectCards;
