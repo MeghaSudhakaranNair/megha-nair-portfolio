@@ -90,7 +90,16 @@ const MainCards = ({ projects }: MainCardsProps) => {
   const backgroundColor = currentTheme === "dark" ? "#0a0a0a" : "#ffffff";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#171717";
   const borderStyle = currentTheme === "light" ? "1px solid #dcdcdc" : "none";
-
+  const borderColor =
+    currentTheme === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+  const shadow =
+    currentTheme === "dark"
+      ? "0 6px 18px rgba(0,0,0,0.35)"
+      : "0 6px 16px rgba(22,34,51,0.12)";
+  const shadowHover =
+    currentTheme === "dark"
+      ? "0 10px 24px rgba(0,0,0,0.45)"
+      : "0 12px 28px rgba(22,34,51,0.18)";
   return (
     <Box
       sx={{
@@ -119,15 +128,32 @@ const MainCards = ({ projects }: MainCardsProps) => {
               width: 300,
 
               //   #a4b3ff26
+              // backgroundColor:
+              //   currentTheme === "dark"
+              //     ? "rgba(31, 31, 31, 0.6)" // dark translucent
+              //     : "rgba(21, 128, 248, 0.1)", // light translucent
               backgroundColor:
                 currentTheme === "dark"
-                  ? "rgba(31, 31, 31, 0.6)" // dark translucent
-                  : "rgba(21, 128, 248, 0.1)", // light translucent
-              color: currentTheme === "dark" ? "#fff" : "#000",
-              borderRadius: "20px",
-              boxShadow: "none",
+                  ? "rgba(17,17,17,0.6)"
+                  : "rgba(255,255,255,0.6)",
 
-              padding: "25px 15px 15px 15px",
+              // ✅ Gradients must go in backgroundImage (not backgroundColor)
+
+              // Optional: blend the gradient with the base color a bit more
+              backgroundBlendMode: "overlay",
+
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              color: currentTheme === "dark" ? "#fff" : "#000",
+              borderRadius: "10px",
+              // border: `1px solid ${borderColor}`,
+              boxShadow: shadow,
+              transition: "transform 200ms ease, box-shadow 200ms ease",
+              "&:hover": {
+                transform: "translateY(-2px)",
+                boxShadow: shadowHover,
+              },
+              // padding: "25px 15px 15px 15px",
             }}
             data-aos="fade-up"
             data-aos-delay={`${index * 100}`}
@@ -140,11 +166,18 @@ const MainCards = ({ projects }: MainCardsProps) => {
                 width: "100%",
                 height: "200px",
                 objectFit: "cover",
-                borderRadius: "10px",
+                borderRadius: "10px 10px 0px 0px",
               }}
             />
 
-            <CardContent>
+            <CardContent
+              sx={{
+                background:
+                  currentTheme === "dark"
+                    ? "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(17,17,17,0.5) 20%, rgba(96,165,250,0.10) 100%)"
+                    : "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 20%, rgba(21,128,248,0.08) 100%)",
+              }}
+            >
               <Typography
                 variant="h6"
                 sx={{

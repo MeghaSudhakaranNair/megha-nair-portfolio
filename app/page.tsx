@@ -8,6 +8,7 @@ import AboutMe from "./components/Aboutme";
 import Contact from "./components/Contact";
 import { useEffect } from "react";
 import Landing from "./components/Landing";
+import { Typography } from "@mui/material";
 
 export default function Home() {
   useEffect(() => {
@@ -52,6 +53,26 @@ export default function Home() {
     <div>
       <Header />
       <Landing />
+      <Typography
+        variant="h4"
+        className="fade fadeOut" // ← observe + fade
+        data-aos="fade-up" // ← AOS entrance
+        data-aos-delay="120"
+        sx={{
+          color: "var(--foreground)",
+          // color: "black", // Adjust based on the theme if needed
+          textDecoration: "underline",
+          textDecorationStyle: "revert",
+          textAlign: "center",
+          p: { xs: 0, sm: 4 },
+          mt: { xs: 0, sm: 10 },
+          // marginLeft: "70px",
+          fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.7rem" },
+          fontWeight: 400,
+        }}
+      >
+        Work Experience + Projects
+      </Typography>
       <Projects />
       {/* <AboutMe /> */}
       {/* <Contact /> */}

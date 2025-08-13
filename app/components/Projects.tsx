@@ -61,49 +61,6 @@ const Projects = () => {
     },
   ];
 
-  const project = [
-    {
-      title: "Agriculture Yield Prediction App",
-      description:
-        "Predict the yield of different crops based on weather and soil data.",
-      image: "/agriculture.jpg", // Replace with actual image path
-      tools: "Python, Machine Learning, TensorFlow",
-      githubLink:
-        "https://github.com/yourusername/agriculture-yield-prediction",
-    },
-    {
-      title: "Student Score Predictor",
-      description: "Predict student exam scores based on various parameters.",
-      image: "/score-predictor.jpg", // Replace with actual image path
-      tools: "Python, Scikit-learn",
-      githubLink: "https://github.com/yourusername/student-score-predictor",
-    },
-    {
-      title: "Wound Sensor",
-      description:
-        "A sensor-based system to detect and monitor wound healing in real time.",
-      image: "/wound-sensor.jpg", // Replace with actual image path
-      tools: "Arduino, IoT, Machine Learning",
-      githubLink: "https://github.com/yourusername/wound-sensor",
-    },
-    {
-      title: "Drowsiness Detection",
-      description:
-        "Detect drowsiness in drivers using real-time facial recognition and alert systems.",
-      image: "/drowsiness.jpg", // Replace with actual image path
-      tools: "Python, OpenCV, Deep Learning",
-      githubLink: "https://github.com/yourusername/drowsiness-detection",
-    },
-    {
-      title: "Dr Meet",
-      description:
-        "A web application to connect patients with doctors for online consultations.",
-      image: "/dr-meet.jpg", // Replace with actual image path
-      tools: "React, Node.js, MongoDB",
-      githubLink: "https://github.com/yourusername/dr-meet",
-    },
-  ];
-
   return (
     // <section id="projects" className="fade fadeOut">
     <Box>
@@ -111,40 +68,36 @@ const Projects = () => {
         {/* Pass the projects data to MainCards component */}
         <MainCards projects={work} />
       </Box>
-      <Box sx={{ padding: "20px", display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          padding: "20px",
+          marginTop: "30px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {/* Pass the projects data to MainCards component */}
-        <Typography
+        {/* <Typography
           variant="h4"
           sx={{
             color: "black", // Adjust based on the theme if needed
-            textAlign: "left",
+            textAlign: "center",
+            // pl: 3,
 
-            marginLeft: "70px",
-            fontSize: { xs: "1.5rem", sm: "2rem", md: "2rem" },
+            // marginLeft: "70px",
+            fontSize: { xs: "1.5rem", sm: "2rem", md: "1.7rem" },
             fontWeight: 400,
           }}
         >
-          Projects
-        </Typography>
+          Project Gallery
+        </Typography> */}
 
         <FeatureCard projects={featuredprojects} />
       </Box>
 
-      {/* <Box sx={{ padding: "40px", display: "flex", flexDirection: "column" }}>
-        <Typography
-          variant="h4"
-          sx={{
-            color: "black", // Adjust based on the theme
-            textAlign: "center",
-            marginBottom: "40px",
-            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-          }}
-        >
-          Projects
-        </Typography>
-
-        <MainCards projects={projects} />
-      </Box> */}
+      <Box sx={{ padding: "40px", display: "flex", flexDirection: "column" }}>
+        <ProjectCard />
+      </Box>
     </Box>
     // </section>
   );

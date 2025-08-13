@@ -4,6 +4,12 @@ import React, { useEffect, useState } from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Julee } from "next/font/google";
+const julee = Julee({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-julee",
+});
 
 interface Project {
   title: string;
@@ -48,7 +54,14 @@ const FeatureCards = ({ projects }: FeatureCardsProps) => {
   const backgroundColor = currentTheme === "dark" ? "#0a0a0a" : "#ffffff";
   const cardBg = currentTheme === "dark" ? "#1f1f1f" : "#1580f826";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#171717";
-
+  const shadow =
+    currentTheme === "dark"
+      ? "0 6px 18px rgba(0,0,0,0.35)"
+      : "0 6px 16px rgba(22,34,51,0.12)";
+  const shadowHover =
+    currentTheme === "dark"
+      ? "0 10px 24px rgba(0,0,0,0.45)"
+      : "0 12px 28px rgba(22,34,51,0.18)";
   return (
     <Box
       sx={{
@@ -70,14 +83,31 @@ const FeatureCards = ({ projects }: FeatureCardsProps) => {
           data-aos-delay={`${index * 100}`}
           sx={{
             width: "100%", // full width
-            borderRadius: "20px",
-            boxShadow: "none",
+            borderRadius: "10px",
+
+            // backgroundColor:
+            //   currentTheme === "dark"
+            //     ? "rgba(31, 31, 31, 0.6)" // dark translucent
+            //     : "rgba(21, 128, 248, 0.1)", // light translucent
             backgroundColor:
               currentTheme === "dark"
-                ? "rgba(31, 31, 31, 0.6)" // dark translucent
-                : "rgba(21, 128, 248, 0.1)", // light translucent
-            backdropFilter: "blur(10px)", // blur behind
-            WebkitBackdropFilter: "blur(10px)", // Safari support
+                ? "rgba(17,17,17,0.6)"
+                : "rgba(255,255,255,0.6)",
+
+            // ✅ Gradients must go in backgroundImage (not backgroundColor)
+            backgroundImage:
+              currentTheme === "dark"
+                ? "linear-gradient(135deg, rgba(96,165,250,0.12), rgba(59,130,246,0.10) 40%, rgba(221,214,254,0.16) 85%)"
+                : "linear-gradient(135deg, rgba(21,128,248,0.10), rgba(147,197,253,0.12) 45%, rgba(221,214,254,0.16) 90%)",
+
+            // Optional: blend the gradient with the base color a bit more
+            backgroundBlendMode: "overlay",
+
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+
+            boxShadow: shadow,
+            transition: "transform 200ms ease, box-shadow 200ms ease",
 
             color: textColor,
             overflow: "hidden",
