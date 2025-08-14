@@ -74,7 +74,7 @@ export default function Home() {
         Work Experience + Projects
       </Typography>
       <Projects />
-      {/* <AboutMe /> */}
+      <AboutMe />
       {/* <Contact /> */}
     </div>
   );

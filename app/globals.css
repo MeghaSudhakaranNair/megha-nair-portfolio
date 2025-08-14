@@ -125,6 +125,27 @@ section {
   transition: opacity 0.7s ease-in-out;
 }
 
+/* @media (max-width: 600px) {
+  section {
+    height: auto; 
+    min-height: 100vh; 
+  }
+} */
+
+@media (max-width: 600px) {
+  section {
+    height: auto;
+    min-height: 100vh;
+    opacity: 1; /* Ensure visibility */
+    transition: none; /* Disable transition for mobile */
+  }
+
+  .fade {
+    opacity: 1; /* Ensure the content is visible immediately on mobile */
+    transition: none; /* Disable the transition */
+  }
+}
+
 /* Ensure smooth fading transitions */
 .fade {
   transition: opacity 0.7s ease-in-out; /* Smooth transition */
