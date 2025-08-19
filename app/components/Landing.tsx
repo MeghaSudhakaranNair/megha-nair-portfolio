@@ -39,7 +39,7 @@ const Home = () => {
     },
     {
       icon: <Email />,
-      link: "mailto:mnair5@asu.edu", // Replace with your email
+      link: "#contact-me", // Replace with your email
     },
   ];
 
@@ -78,7 +78,14 @@ const Home = () => {
               <IconButton
                 key={index}
                 href={link}
-                target="_blank"
+                target={link.startsWith("http") ? "_blank" : undefined} // Only open external links in new tab
+                onClick={(e) => {
+                  if (link.startsWith("#")) {
+                    e.preventDefault();
+                    const element = document.querySelector(link);
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
                 sx={{
                   backgroundColor: currentTheme === "dark" ? "#fff" : "#000",
                   color: currentTheme === "dark" ? "#000" : "#fff",

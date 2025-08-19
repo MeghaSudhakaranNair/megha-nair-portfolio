@@ -100,6 +100,7 @@ const MainCards = ({ projects }: MainCardsProps) => {
     currentTheme === "dark"
       ? "0 10px 24px rgba(0,0,0,0.45)"
       : "0 12px 28px rgba(22,34,51,0.18)";
+
   return (
     <Box
       sx={{

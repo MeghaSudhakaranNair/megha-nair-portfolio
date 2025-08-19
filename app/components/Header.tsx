@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AppBar, Toolbar, Button, IconButton, Box } from "@mui/material";
-import { LightMode, DarkMode } from "@mui/icons-material";
+import { LightMode, DarkMode, Download } from "@mui/icons-material";
 
 const Header = () => {
   // Use 'dark' | 'light' for the theme state
@@ -21,6 +21,13 @@ const Header = () => {
     setTheme(newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
+  };
+
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -51,50 +58,76 @@ const Header = () => {
           }}
         >
           <Button
-            href="#home"
+            onClick={() => handleScroll("home")}
             sx={{
               display: { xs: "none", sm: "none", md: "block" },
               color: "var(--foreground)",
+
+              "&:hover": {
+                backgroundColor: "transparent", // remove default hover background
+                color: theme === "dark" ? "#ffffff" : "#171717", // match theme foreground
+              },
+              "&:focus": {
+                backgroundColor: "transparent",
+                color: theme === "dark" ? "#ffffff" : "#171717",
+              },
             }}
           >
             Home
           </Button>
           <Button
-            href="#projects"
+            onClick={() => handleScroll("projects")}
             sx={{
               display: { xs: "none", sm: "none", md: "block" },
               color: "var(--foreground)",
+              "&:hover": {
+                backgroundColor: "transparent", // remove default hover background
+                color: theme === "dark" ? "#ffffff" : "#171717", // match theme foreground
+              },
+              "&:focus": {
+                backgroundColor: "transparent",
+                color: theme === "dark" ? "#ffffff" : "#171717",
+              },
             }}
           >
             Projects
           </Button>
           <Button
-            href="#about-me"
+            onClick={() => handleScroll("about-me")}
             sx={{
               display: { xs: "none", sm: "none", md: "block" },
 
               color: "var(--foreground)",
+              "&:hover": {
+                backgroundColor: "transparent", // remove default hover background
+                color: theme === "dark" ? "#ffffff" : "#171717", // match theme foreground
+              },
+              "&:focus": {
+                backgroundColor: "transparent",
+                color: theme === "dark" ? "#ffffff" : "#171717",
+              },
             }}
           >
             About Me
           </Button>
+
           <Button
-            href="#contact"
+            href="/MeghaSudhakaranNair.pdf" // path in the public folder
+            download // triggers file download
             sx={{
-              display: { xs: "none", sm: "none", md: "block" },
+              display: { xs: "none", sm: "none", md: "flex" },
               color: "var(--foreground)",
+              alignItems: "center",
+              gap: 1,
+
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: theme === "dark" ? "#ffffff" : "#171717",
+              },
             }}
           >
-            Contact Us
-          </Button>
-          <Button
-            href="/resume"
-            sx={{
-              display: { xs: "none", sm: "none", md: "block" },
-              color: "var(--foreground)",
-            }}
-          >
-            Download Resume
+            Resume
+            <Download fontSize="small" />
           </Button>
           <IconButton
             onClick={toggleTheme}
@@ -104,6 +137,32 @@ const Header = () => {
           </IconButton>
         </Box>
       </Toolbar>
+      {/* Floating Resume Button for Mobile */}
+      <Button
+        href="/MeghaSudhakaranNair.pdf"
+        download
+        variant="contained"
+        color="primary"
+        endIcon={<Download />}
+        sx={{
+          display: { xs: "flex", sm: "flex", md: "none" }, // only show on mobile
+          position: "fixed",
+          bottom: 34,
+          right: 16,
+          zIndex: 2000, // above everything else
+          borderRadius: "50px",
+          paddingX: 3,
+          paddingY: 1.5,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+          backgroundColor: theme === "dark" ? "#ffffff" : "#171717", // change bg by theme
+          color: theme === "dark" ? "#171717" : "#ffffff", // change text by theme
+          "&:hover": {
+            backgroundColor: theme === "dark" ? "#e0e0e0" : "#333333",
+          },
+        }}
+      >
+        Resume
+      </Button>
     </AppBar>
   );
 };

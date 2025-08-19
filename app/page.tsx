@@ -54,6 +54,7 @@ export default function Home() {
       <Header />
       <Landing />
       <Typography
+        id="projects"
         variant="h4"
         className="fade fadeOut" // ← observe + fade
         data-aos="fade-up" // ← AOS entrance
@@ -75,7 +76,7 @@ export default function Home() {
       </Typography>
       <Projects />
       <AboutMe />
-      {/* <Contact /> */}
+      <Contact />
     </div>
   );
 }
