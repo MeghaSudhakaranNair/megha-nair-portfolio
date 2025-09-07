@@ -3,6 +3,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image"; // To use the Image component for optimized loading
 import { useState, useEffect } from "react";
+import StackIcon from "tech-stack-icons";
 
 const AboutMe = () => {
   const [currentTheme, setCurrentTheme] = useState<string | null>(null);
@@ -27,6 +28,31 @@ const AboutMe = () => {
     return () => observer.disconnect();
   }, []);
 
+  const skills = [
+    { name: "Next.js", iconName: "nextjs2" },
+    { name: "TypeScript", iconName: "typescript" },
+    { name: "Python", iconName: "python" },
+    { name: "AWS", iconName: "aws" },
+    { name: "MatrialUI", iconName: "materialui" },
+    { name: "CSS", iconName: "css3" },
+    { name: "Tailwind", iconName: "tailwindcss" },
+    { name: "HTML", iconName: "html5" },
+    { name: "GitHub", iconName: "github" },
+    { name: "Git", iconName: "git" },
+    { name: "Cypress", iconName: "cypress" },
+    { name: "Jest", iconName: "jest" },
+    { name: "React", iconName: "react" },
+    { name: "Node.js", iconName: "nodejs" },
+    { name: "PostgreSQL", iconName: "postgresql" },
+    { name: "Prisma", iconName: "prisma" },
+    { name: "Angular", iconName: "angular" },
+    { name: "Ionic", iconName: "ionic" },
+    { name: "Azure", iconName: "azure" },
+    { name: "Postman", iconName: "postman" },
+    { name: "MongoDB", iconName: "mongodb" },
+    { name: "Colab", iconName: "colab" },
+  ];
+
   // Define colors per theme
   const backgroundColor = currentTheme === "dark" ? "#1a1a1a" : "#ffffff"; // Darker shade for background
   const textColor = currentTheme === "dark" ? "#ffffff" : "#171717";
@@ -46,6 +72,7 @@ const AboutMe = () => {
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             alignItems: "center",
+
             gap: 4,
             paddingLeft: { xs: "20px", md: "70px" },
             paddingRight: { xs: "20px", md: "50px" },
@@ -59,6 +86,7 @@ const AboutMe = () => {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "50%",
+
               overflow: "hidden",
               width: { xs: "150px", md: "400px" },
               height: { xs: "150px", md: "400px" },
@@ -187,9 +215,10 @@ const AboutMe = () => {
         <Box
           sx={{
             display: "flex",
+            width: "100vw",
             flexDirection: "column",
             gap: 2,
-            padding: "10px 100px 100px 100px",
+            padding: { xs: "10px 20px", md: "10px 100px 100px 100px" },
             textAlign: "left",
             flex: 2,
           }}
@@ -197,101 +226,57 @@ const AboutMe = () => {
           <Typography variant="h6" sx={{ fontWeight: 600, color: textColor }}>
             Technical Skills:
           </Typography>
+
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-              gap: 2,
+              overflow: "hidden", // This container acts as the viewport
+              width: "100%",
             }}
           >
-            {/* Example skills */}
             <Box
               sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
+                display: "flex", // The new parent container
+                flexDirection: "row",
+                gap: 5,
+                alignItems: "center",
+                width: "200%", // This is the fix: ensures the container is double the viewport width
+                animation: "scrollAnimation 30s linear infinite",
+                "&:hover": {
+                  animationPlayState: "paused",
+                },
+                "@keyframes scrollAnimation": {
+                  "0%": {
+                    transform: "translateX(0)",
+                  },
+                  "100%": {
+                    transform: "translateX(-80%)", // Now the animation moves half of the container's width, which is one full set of icons
+                  },
+                },
               }}
             >
-              JavaScript
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              TypeScript
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              React
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              Node.js
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              Next.js
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              Express
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              MongoDB
-            </Box>
-            <Box
-              sx={{
-                padding: "8px",
-                backgroundColor:
-                  currentTheme === "light" ? "#f0f0f0" : "#000000",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              PostgreSQL
+              {[...skills, ...skills].map((skill, index) => (
+                <Box
+                  key={`${skill.name}-${index}`}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    //   backgroundColor:
+                    //     currentTheme === "light" ? "#f0f0f0" : "#f0f0f0",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                    transition: "transform 0.2s ease-in-out",
+                  }}
+                >
+                  <StackIcon
+                    name={skill.iconName}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      fill: currentTheme === "dark" ? "#fff" : "#000",
+                    }}
+                  />
+                </Box>
+              ))}
             </Box>
           </Box>
         </Box>
