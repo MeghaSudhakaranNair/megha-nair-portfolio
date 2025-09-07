@@ -53,7 +53,6 @@ const AboutMe = () => {
     { name: "Colab", iconName: "colab" },
   ];
 
-  // Define colors per theme
   const backgroundColor = currentTheme === "dark" ? "#1a1a1a" : "#ffffff"; // Darker shade for background
   const textColor = currentTheme === "dark" ? "#ffffff" : "#171717";
   const boxShadow =
