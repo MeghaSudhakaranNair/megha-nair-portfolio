@@ -14,6 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AOS from "aos";
 import "aos/dist/aos.css";
 interface Project {
+  name: string;
   title: string;
   from: string;
   to: string;
@@ -133,7 +134,7 @@ const MainCards = ({ projects }: MainCardsProps) => {
   const expandedProject =
     expandedCard !== null
       ? projects[expandedCard]
-      : { title: "", from: "", to: "", image: "", feature: [] };
+      : { name: "", title: "", from: "", to: "", image: "", feature: [] };
   return (
     <Box
       key={componentKey}
@@ -358,7 +359,7 @@ const MainCards = ({ projects }: MainCardsProps) => {
               variant="h5"
               sx={{ color: textColor, mb: 2, fontWeight: "bold" }}
             >
-              {expandedProject?.title}
+              {expandedProject?.name}
             </Typography>
             <IconButton
               onClick={() => setIsExpanded(false)}

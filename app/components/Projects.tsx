@@ -9,6 +9,7 @@ const Projects = () => {
   // Dummy project data
   const work = [
     {
+      name: "BLUSVN Technologies",
       title: "Software Developer",
       from: "June 2024",
       to: "Present",
@@ -28,6 +29,7 @@ const Projects = () => {
       ],
     },
     {
+      name: "Interbiz Consulting LLC",
       title: "Software Engineer",
       from: "Aug 2024",
       to: "May 2023",
@@ -40,6 +42,7 @@ const Projects = () => {
       ],
     },
     {
+      name: "HAILABS",
       title: "Software Developer",
       from: "July 2020",
       to: "July 2021",
@@ -47,6 +50,7 @@ const Projects = () => {
       feature: [
         "Conducted research on the most recent AI trends and developed a curriculum with over 27 modules and 12 projects for students in grades 4 through 9.",
         "Facilitated cross-functional collaboration between technical, pedagogy, and ML teams to ensure the seamless integration of AI technologies for an edtech platform for students learn data science and ML in a gamified manner.",
+        "Designed and developed a dynamic content management system (CMS) UI using React to manage the curriculum for the edtech platform, which streamlined content updates and improved operational efficiency.",
         "Refined ML model accuracy by leveraging Python, TensorFlow, and Keras to build robust data pipelines and optimize algorithms for an intuitive student learning experience.",
         "Engineered and deployed a suite of AI-powered games for a student learning platform, integrating pre-trained FaceNet and BERT models to teach computer vision and natural language processing concepts in a gamified and intuitive way.",
         "Managed collaborative development workflows and maintained code quality by implementing version control with GitHub.",
