@@ -4,7 +4,9 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image"; // To use the Image component for optimized loading
 import { useState, useEffect } from "react";
 import StackIcon from "tech-stack-icons";
-
+import AzureIcon from "../lib/AzureIcon";
+import PythonIcon from "../lib/PythonIcon";
+// import PythonIcon from "../lib/PythonIcon";
 const AboutMe = () => {
   const [currentTheme, setCurrentTheme] = useState<string | null>(null);
   const isMobile = useMediaQuery("(max-width: 600px)");
@@ -29,7 +31,7 @@ const AboutMe = () => {
   }, []);
 
   const skills = [
-    { name: "Next.js", iconName: "nextjs2" },
+    { name: "Next.js", iconName: "nextjs" },
     { name: "TypeScript", iconName: "typescript" },
     { name: "Python", iconName: "python" },
     { name: "AWS", iconName: "aws" },
@@ -47,7 +49,6 @@ const AboutMe = () => {
     { name: "Prisma", iconName: "prisma" },
     { name: "Angular", iconName: "angular" },
     { name: "Ionic", iconName: "ionic" },
-    { name: "Azure", iconName: "azure" },
     { name: "Postman", iconName: "postman" },
     { name: "MongoDB", iconName: "mongodb" },
     { name: "Colab", iconName: "colab" },
@@ -253,6 +254,8 @@ const AboutMe = () => {
                 },
               }}
             >
+              <PythonIcon size={40} />
+              <AzureIcon size={40} />
               {[...skills, ...skills].map((skill, index) => (
                 <Box
                   key={`${skill.name}-${index}`}
@@ -266,14 +269,21 @@ const AboutMe = () => {
                     transition: "transform 0.2s ease-in-out",
                   }}
                 >
-                  <StackIcon
-                    name={skill.iconName}
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      fill: currentTheme === "dark" ? "#fff" : "#000",
-                    }}
-                  />
+                  {skill.iconName === "Azure" ? (
+                    <AzureIcon size={40} />
+                  ) : skill.iconName === "Python" ? (
+                    // Replace this with your custom Python component
+                    <PythonIcon size={40} />
+                  ) : (
+                    <StackIcon
+                      name={skill.iconName}
+                      variant={currentTheme === "dark" ? "dark" : "light"}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                      }}
+                    />
+                  )}
                 </Box>
               ))}
             </Box>
