@@ -62,7 +62,7 @@ export default function Home() {
         sx={{
           color: "var(--foreground)",
           // color: "black", // Adjust based on the theme if needed
-          textDecoration: "underline",
+
           textDecorationStyle: "revert",
           textAlign: "center",
           p: { xs: 0, sm: 4 },
