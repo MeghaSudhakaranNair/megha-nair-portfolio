@@ -14,10 +14,17 @@ const Projects = () => {
       to: "Present",
       image: "/blusvn.jpeg", // Add your image path here
       feature: [
-        "•Led a team of 3 developers to design and develop the companyʼs official website and app using Next.js, Material UI, and Capacitor, collaborating in Figma to deliver a responsive, accessible, and brand-aligned experience across web and mobile platforms.",
-        "Developed UI and integrated tRPC APIs for core modules such as product management, order management, and chat integration.",
-        "Enhanced authentication by resolving SSO issues and implementing biometric authentication with Capacitor Biometrics, improving security, streamlining access, and enabling faster logins.",
-        "Optimized LCP by implementing lazy-loading and asset preloading, boosting Lighthouse scores by 15% and improving load times. •Implemented secure private and public routing with next/navigation, improving platform security, structured navigation, and seamless user access across pages.",
+        " Led a 3-developer team in the end-to-end architecture and development of the company’s official website and app using Next.js, Material UI, and Capacitor, leveraging Figma for design collaboration and delivering a responsive and accessible experience across web and mobile platforms.",
+
+        "Designed and implemented a scalable data model with Prisma and built robust tRPC API endpoints for core modules, which resulted in a significant improvement in data retrieval time and enhanced data integrity for personalized user experiences.",
+        "Ensured API reliability and robustness by implementing comprehensive unit and integration tests with Jest, which improved code quality and reduced production bugs by 40%.",
+        "Optimized core application performance by implementing lazy-loading, asset preloading, and a full-stack pagination solution for extensive order records, boosting Lighthouse scores by 15% and significantly improving initial load times.",
+
+        "Enhanced authentication by resolving SSO issues and implementing biometric authentication with Capacitor Biometrics, improving security and streamlining user access.",
+
+        "Implemented secure private and public routing with next/navigation to improve platform security, establish structured navigation, and ensure seamless user access.",
+
+        "Automated weekly product pricing updates using a Python web scraper deployed to an AWS Lambda function, which ensured data accuracy and streamlined the data collection workflow.",
       ],
     },
     {
